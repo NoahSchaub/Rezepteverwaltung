@@ -10,6 +10,11 @@ import lombok.Setter;
  */
 
 public class Rezept {
+
+    @Getter
+    @Setter
+    private int rezeptId;
+
     @Getter
     @Setter
     private String rezeptName;

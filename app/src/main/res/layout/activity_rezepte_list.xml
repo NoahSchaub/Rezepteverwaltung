@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ch.bbbaden.ims.rezepteverwaltung.activities.RezepteActivity">
+    tools:context="ch.bbbaden.ims.rezepteverwaltung.activities.RezepteListActivity">
 
-    <ListView
-        android:layout_width="368dp"
-        android:layout_height="148dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>

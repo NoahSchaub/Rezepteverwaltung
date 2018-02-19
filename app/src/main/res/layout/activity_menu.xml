@@ -6,4 +6,61 @@
     android:layout_height="match_parent"
     tools:context="ch.bbbaden.ims.rezepteverwaltung.activities.MenuActivity">
 
+
+    <Button
+        android:id="@+id/btnAlleRezepte"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="88dp"
+        android:text="Alle Rezepte"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGoToSuche"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:text="Suche Nach Rezepten"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlleRezepte" />
+
+    <Button
+        android:id="@+id/btnNeuesRezept"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:text="Neues Rezept hinzufügen"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGluck" />
+
+    <Button
+        android:id="@+id/btnGluck"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:text="Auf Gut Glück"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoToSuche" />
+
+    <Button
+        android:id="@+id/btnBackup"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:text="Back Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNeuesRezept"
+        app:layout_constraintVertical_bias="0.038" />
+
 </android.support.constraint.ConstraintLayout>
