@@ -1,6 +1,7 @@
 package ch.bbbaden.ims.rezepteverwaltung.services;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 /**
@@ -12,4 +13,5 @@ public class Toaster {
         Toast toast = Toast.makeText(context, toToast, duration);
         toast.show();
     }
+
 }

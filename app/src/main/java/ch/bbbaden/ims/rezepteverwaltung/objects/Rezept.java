@@ -3,8 +3,6 @@ package ch.bbbaden.ims.rezepteverwaltung.objects;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 

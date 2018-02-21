@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
 
-        btnEnter = (Button) findViewById(R.id.btnLogin);     //Defines Button
-        editName = (EditText) findViewById(R.id.editName);    //Defines EditTextes
-        editPassword = (EditText) findViewById(R.id.editPasswort);
+        btnEnter = findViewById(R.id.btnLogin);     //Defines Button
+        editName = findViewById(R.id.editSuchName);    //Defines EditTextes
+        editPassword = findViewById(R.id.editPasswort);
 
 
         editName.setOnKeyListener(new View.OnKeyListener() {

@@ -1,5 +1,6 @@
 package ch.bbbaden.ims.rezepteverwaltung.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,7 +36,7 @@ public class AddRezeptActivity extends AppCompatActivity {
         editZutaten = findViewById(R.id.editZutat);
         editDauer = findViewById(R.id.editDauer);
 
-        rezeptDAO= new RezeptDAO() {
+        rezeptDAO = new RezeptDAO() {
             @Override
             public List<Rezept> getAll() {
                 return null;
@@ -66,6 +67,7 @@ public class AddRezeptActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveRezept();
+                goToNewActivity(RezepteActivity.class);
             }
         });
     }
@@ -75,16 +77,22 @@ public class AddRezeptActivity extends AppCompatActivity {
         addRezept.setRezeptName(editName.getText().toString());
         addRezept.setRezeptDauer(editDauer.getText().toString());
         addRezept.setRezeptZubereitung(editZubereitung.getText().toString());
-        List<String>[] zutaten = new List[1];
-        zutaten[0].add("1 Gramm");
-        zutaten[1].add(editZutaten.getText().toString());
-       // addRezept.setRezeptZutaten(zutaten);
+//        List<String>[] zutaten = new List[1];
+//        zutaten[0].add("1 Gramm");
+//        zutaten[1].add(editZutaten.getText().toString());
+        // addRezept.setRezeptZutaten(zutaten);
 
 
-       addRezept(AppDatabase.getAppDatabase(MainActivity.context),addRezept);
+        addRezept(AppDatabase.getAppDatabase(MainActivity.context), addRezept);
     }
+
     private static Rezept addRezept(final AppDatabase db, Rezept rezept) {
+        rezept.setRezeptId(db.rezeptDAO().getAll().size()+1);
         db.rezeptDAO().insertAll(rezept);
         return rezept;
+    }
+
+    public void goToNewActivity(Class goToClass) {
+        startActivity(new Intent(getApplicationContext(), goToClass));
     }
 }

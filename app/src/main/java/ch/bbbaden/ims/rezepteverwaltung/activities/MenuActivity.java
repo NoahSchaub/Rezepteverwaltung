@@ -31,7 +31,7 @@ public class MenuActivity extends AppCompatActivity {
         btnAlleRezepte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNewActivity(RezepteListActivity.class);
+                goToNewActivity(RezepteActivity.class);
             }
         });
 
