@@ -67,7 +67,7 @@ public class AddRezeptActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveRezept();
-                goToNewActivity(RezepteActivity.class);
+                goToNewActivity(RezepteListActivity.class);
             }
         });
     }

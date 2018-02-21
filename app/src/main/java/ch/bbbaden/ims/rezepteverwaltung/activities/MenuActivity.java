@@ -6,7 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.List;
+import java.util.Random;
+
 import ch.bbbaden.ims.rezepteverwaltung.R;
+import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
+import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -31,7 +36,7 @@ public class MenuActivity extends AppCompatActivity {
         btnAlleRezepte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNewActivity(RezepteActivity.class);
+                goToNewActivity(RezepteListActivity.class);
             }
         });
 
@@ -44,13 +49,27 @@ public class MenuActivity extends AppCompatActivity {
         btnNeuesRezept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNewActivity(AddRezeptActivity.class);
+                goToNewActivity(AddRezepteVariantenActivity.class);
+            }
+        });
+        btnGluck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Rezept random=getRandomRezept();
+                System.out.println(random.getRezeptName());
+                goToNewActivity(RezeptActivity.class);
             }
         });
 
     }
 
-    public void goToNewActivity(Class goToClass){
+    public Rezept getRandomRezept() {
+        List<Rezept> rezepte = AppDatabase.getAppDatabase(MainActivity.context).rezeptDAO().getAll();
+        Random rand = new Random();
+        return rezepte.get(rand.nextInt(rezepte.size()));
+    }
+
+    public void goToNewActivity(Class goToClass) {
         startActivity(new Intent(getApplicationContext(), goToClass));
     }
 }

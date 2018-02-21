@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ch.bbbaden.ims.rezepteverwaltung">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,9 +20,6 @@
         </activity>
         <activity android:name=".activities.MenuActivity" />
         <activity
-            android:name=".activities.RezepteActivity"
-            android:parentActivityName=".activities.MenuActivity" />
-        <activity
             android:name=".activities.RezepteListActivity"
             android:parentActivityName=".activities.MenuActivity" />
         <activity
@@ -28,7 +27,15 @@
             android:parentActivityName=".activities.MenuActivity" />
         <activity
             android:name=".activities.AddRezeptActivity"
-            android:parentActivityName=".activities.MenuActivity"></activity>
+            android:parentActivityName=".activities.MenuActivity" />
+        <activity
+            android:name=".activities.RezeptActivity"
+            android:label="@string/title_activity_rezept"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.AddRezepteVariantenActivity"></activity>
+        <activity
+            android:name=".activities.barcode.BarcodeCaptureActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>
