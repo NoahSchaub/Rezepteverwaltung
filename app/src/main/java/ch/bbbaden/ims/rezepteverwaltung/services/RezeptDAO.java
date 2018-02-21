@@ -15,19 +15,18 @@ import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 
 @Dao
 public interface RezeptDAO {
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM rezepte")
     List<Rezept> getAll();
 
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-    List<Rezept> loadAllByIds(int[] userIds);
+    @Query("SELECT * FROM rezepte WHERE rezeptId IN (:rezeptIds)")
+    List<Rezept> loadAllByIds(int[] rezeptIds);
 
-    @Query("SELECT * FROM user WHERE first_name LIKE :first AND "
-            + "last_name LIKE :last LIMIT 1")
-    Rezept findByName(String first, String last);
+    @Query("SELECT * FROM rezepte WHERE rezeptName LIKE :name LIMIT 1")
+    Rezept findByName(String name);
 
     @Insert
-    void insertAll(Rezept... users);
+    void insertAll(Rezept... rezepte);
 
     @Delete
-    void delete(Rezept user);
+    void delete(Rezept rezept);
 }

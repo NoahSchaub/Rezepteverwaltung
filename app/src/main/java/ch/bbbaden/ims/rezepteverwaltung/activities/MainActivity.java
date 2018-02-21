@@ -1,5 +1,6 @@
 package ch.bbbaden.ims.rezepteverwaltung.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import ch.bbbaden.ims.rezepteverwaltung.services.Toaster;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    public static Context context;
 
     EditText editName;
     EditText editPassword;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        context = this;
 
         btnEnter = (Button) findViewById(R.id.btnLogin);     //Defines Button
         editName = (EditText) findViewById(R.id.editName);    //Defines EditTextes

@@ -11,7 +11,7 @@ import lombok.Setter;
 /**
  * Created by Noah on 19.02.2018.
  */
-@Entity
+@Entity(tableName = "rezepte")
 public class Rezept {
 
     @Getter
@@ -23,9 +23,9 @@ public class Rezept {
     @Setter
     private String rezeptName;
 
-    @Getter
-    @Setter
-    private List<List<String>> rezeptZutaten;
+//    @Getter
+//    @Setter
+//    private List<String>[] rezeptZutaten;
 
     @Getter
     @Setter
