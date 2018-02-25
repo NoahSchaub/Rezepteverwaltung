@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 import ch.bbbaden.ims.rezepteverwaltung.R;
@@ -15,6 +18,8 @@ import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
 import ch.bbbaden.ims.rezepteverwaltung.services.RezeptDAO;
 
 public class AddRezeptActivity extends AppCompatActivity {
+
+    private DatabaseReference mDatabase;
 
     Button btnAdd;
     EditText editName;
@@ -29,6 +34,8 @@ public class AddRezeptActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rezept);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         btnAdd = findViewById(R.id.btnAdd);
         editName = findViewById(R.id.editRezeptName);

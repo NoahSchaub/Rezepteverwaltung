@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,7 +30,7 @@ public class AddRezepteVariantenActivity extends AppCompatActivity {
         btnManuel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddRezeptActivity.class));
+                goToNewActivity(AddRezeptActivity.class);
             }
         });
 
@@ -52,7 +51,8 @@ public class AddRezepteVariantenActivity extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
-//                    mResultTextView.setText(barcode.displayValue);
+                    System.out.println("QR Code        " + barcode.displayValue);
+
                 } else {
 //                    mResultTextView.setText(R.string.no_barcode_captured);
                 }
@@ -63,6 +63,10 @@ public class AddRezepteVariantenActivity extends AppCompatActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void goToNewActivity(Class goToClass) {
+        startActivity(new Intent(getApplicationContext(), goToClass));
     }
 }
 
