@@ -15,6 +15,7 @@ import java.util.List;
 import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
+import ch.bbbaden.ims.rezepteverwaltung.services.DataHolder;
 import ch.bbbaden.ims.rezepteverwaltung.services.RezeptDAO;
 
 public class AddRezeptActivity extends AppCompatActivity {
@@ -73,13 +74,13 @@ public class AddRezeptActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveRezept();
-                goToNewActivity(RezepteListActivity.class);
+                DataHolder.getInstance().setRezept(saveRezept());
+                goToNewActivity(RezeptActivity.class);
             }
         });
     }
 
-    public void saveRezept() {
+    public Rezept saveRezept() {
         addRezept = new Rezept();
         addRezept.setRezeptName(editName.getText().toString());
         addRezept.setRezeptDauer(editDauer.getText().toString());
@@ -92,6 +93,7 @@ public class AddRezeptActivity extends AppCompatActivity {
 
         finish();
         addRezept(AppDatabase.getAppDatabase(MainActivity.context), mDatabase, addRezept);
+        return addRezept;
     }
 
     private static Rezept addRezept(final AppDatabase db, DatabaseReference mDatabase, Rezept rezept) {

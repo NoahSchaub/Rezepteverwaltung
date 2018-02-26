@@ -1,5 +1,6 @@
 package ch.bbbaden.ims.rezepteverwaltung.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
+import ch.bbbaden.ims.rezepteverwaltung.services.DataHolder;
 import ch.bbbaden.ims.rezepteverwaltung.services.SearchRezepte;
 
 public class RezepteSucheActivity extends AppCompatActivity {
@@ -45,6 +47,10 @@ public class RezepteSucheActivity extends AppCompatActivity {
                 for(int i=0; i<rezepts.size();i++){
                     System.out.println(rezepts.get(i).getRezeptName());
                     System.out.println(rezepts.get(i).getRezeptZubereitung());
+                }
+                if (rezepts.size() == 1) {
+                    DataHolder.getInstance().setRezept(rezepts.get(0));
+                    startActivity(new Intent(getApplicationContext(), RezeptActivity.class));
                 }
             }
         });

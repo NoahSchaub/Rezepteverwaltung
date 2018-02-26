@@ -12,6 +12,7 @@ import java.util.Random;
 import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
+import ch.bbbaden.ims.rezepteverwaltung.services.DataHolder;
 import ch.bbbaden.ims.rezepteverwaltung.services.FirebaseConector;
 import ch.bbbaden.ims.rezepteverwaltung.services.Toaster;
 
@@ -61,6 +62,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Rezept random = getRandomRezept();
                 new Toaster(getApplicationContext(), random.getRezeptName() + " RezeptNamer", 1);
+                DataHolder.getInstance().setRezept(random);
                 goToNewActivity(RezeptActivity.class);
             }
         });
