@@ -6,9 +6,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ch.bbbaden.ims.rezepteverwaltung.activities.MainActivity;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 
@@ -29,7 +26,7 @@ public class FirebaseConector {
         mDatabase.child("rezept").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List rezepte = new ArrayList<>();
+                System.out.println("From Firebase");
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     Rezept rezept = noteDataSnapshot.getValue(Rezept.class);
                     System.out.println(rezept.getRezeptName() + " current RezeptName-------------------------------------------------------------------------------------------------");
@@ -37,8 +34,8 @@ public class FirebaseConector {
                         addRezepte(AppDatabase.getAppDatabase(MainActivity.context), rezept);
                     }
                 }
-                System.out.println("From Firebase");
-                System.out.println(rezepte);
+
+
             }
 
             @Override

@@ -41,6 +41,7 @@ public class MenuActivity extends AppCompatActivity {
         btnAlleRezepte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataHolder.getInstance().setRezepteListe(AppDatabase.getAppDatabase(MainActivity.context).rezeptDAO().getAll());
                 goToNewActivity(RezepteListActivity.class);
             }
         });

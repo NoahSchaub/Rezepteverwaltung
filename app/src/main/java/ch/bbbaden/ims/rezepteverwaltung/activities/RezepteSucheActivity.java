@@ -42,15 +42,18 @@ public class RezepteSucheActivity extends AppCompatActivity {
                 queryName = editName.getText().toString();
                 queryAuthor = editAuthor.getText().toString();
 
-                List<Rezept> rezepts =new SearchRezepte().doSearch(queryName,queryAuthor,queryZutaten);
+                List<Rezept> rezepte = new SearchRezepte().doSearch(queryName, queryAuthor, queryZutaten);
 
-                for(int i=0; i<rezepts.size();i++){
-                    System.out.println(rezepts.get(i).getRezeptName());
-                    System.out.println(rezepts.get(i).getRezeptZubereitung());
+                for (int i = 0; i < rezepte.size(); i++) {
+                    System.out.println(rezepte.get(i).getRezeptName());
+                    System.out.println(rezepte.get(i).getRezeptZubereitung());
                 }
-                if (rezepts.size() == 1) {
-                    DataHolder.getInstance().setRezept(rezepts.get(0));
+                if (rezepte.size() == 1) {
+                    DataHolder.getInstance().setRezept(rezepte.get(0));
                     startActivity(new Intent(getApplicationContext(), RezeptActivity.class));
+                } else {
+                    DataHolder.getInstance().setRezepteListe(rezepte);
+                    startActivity(new Intent(getApplicationContext(), RezepteListActivity.class));
                 }
             }
         });
