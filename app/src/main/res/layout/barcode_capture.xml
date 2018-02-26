@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/topLayout"
@@ -7,10 +7,9 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <ch.bbbaden.ims.rezepteverwaltung.activities.CameraSourcePreview
+    <ch.bbbaden.ims.rezepteverwaltung.activities.camera.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </ch.bbbaden.ims.rezepteverwaltung.activities.CameraSourcePreview>
+        android:layout_weight="1"></ch.bbbaden.ims.rezepteverwaltung.activities.camera.CameraSourcePreview>
 </LinearLayout>

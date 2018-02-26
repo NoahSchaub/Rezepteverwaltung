@@ -32,4 +32,14 @@ public class Rezept {
     @Getter
     @Setter
     private String rezeptDauer;
+
+    public Rezept() {
+    }
+
+    public Rezept(int rezeptId, String rezeptName, String rezeptZubereitung, String rezeptDauer) {
+        this.rezeptId = rezeptId;
+        this.rezeptName = rezeptName;
+        this.rezeptZubereitung = rezeptZubereitung;
+        this.rezeptDauer = rezeptDauer;
+    }
 }
