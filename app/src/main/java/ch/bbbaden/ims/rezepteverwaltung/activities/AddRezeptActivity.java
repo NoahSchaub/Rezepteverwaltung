@@ -50,7 +50,7 @@ public class AddRezeptActivity extends AppCompatActivity {
             }
 
             @Override
-            public List<Rezept> loadAllByIds(int[] rezeptIds) {
+            public Rezept loadAllByIds(int rezeptIds) {
                 return null;
             }
 
@@ -90,11 +90,13 @@ public class AddRezeptActivity extends AppCompatActivity {
         // addRezept.setRezeptZutaten(zutaten);
 
 
-        addRezept(AppDatabase.getAppDatabase(MainActivity.context), addRezept);
+        finish();
+        addRezept(AppDatabase.getAppDatabase(MainActivity.context), mDatabase, addRezept);
     }
 
-    private static Rezept addRezept(final AppDatabase db, Rezept rezept) {
+    private static Rezept addRezept(final AppDatabase db, DatabaseReference mDatabase, Rezept rezept) {
         rezept.setRezeptId(db.rezeptDAO().getAll().size()+1);
+        mDatabase.child("rezept").child("rezept" + rezept.getRezeptId()).setValue(rezept);
         db.rezeptDAO().insertAll(rezept);
         return rezept;
     }

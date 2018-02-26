@@ -18,8 +18,8 @@ public interface RezeptDAO {
     @Query("SELECT * FROM rezepte")
     List<Rezept> getAll();
 
-    @Query("SELECT * FROM rezepte WHERE rezeptId IN (:rezeptIds)")
-    List<Rezept> loadAllByIds(int[] rezeptIds);
+    @Query("SELECT * FROM rezepte WHERE rezeptId IN (:rezeptId)")
+    Rezept loadAllByIds(int rezeptId);
 
     @Query("SELECT * FROM rezepte WHERE rezeptName LIKE :name LIMIT 1")
     Rezept findByName(String name);

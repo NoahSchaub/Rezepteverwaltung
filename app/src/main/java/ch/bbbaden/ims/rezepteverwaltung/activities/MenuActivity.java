@@ -12,6 +12,8 @@ import java.util.Random;
 import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
+import ch.bbbaden.ims.rezepteverwaltung.services.FirebaseConector;
+import ch.bbbaden.ims.rezepteverwaltung.services.Toaster;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -26,6 +28,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        FirebaseConector conector = new FirebaseConector();
+        conector.downloadAllRezepte();
         btnAlleRezepte = findViewById(R.id.btnAlleRezepte);
         btnSuche = findViewById(R.id.btnGoToSuche);
         btnGluck = findViewById(R.id.btnGluck);
@@ -55,11 +59,12 @@ public class MenuActivity extends AppCompatActivity {
         btnGluck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Rezept random=getRandomRezept();
-                System.out.println(random.getRezeptName());
+                Rezept random = getRandomRezept();
+                new Toaster(getApplicationContext(), random.getRezeptName() + " RezeptNamer", 1);
                 goToNewActivity(RezeptActivity.class);
             }
         });
+
 
     }
 
