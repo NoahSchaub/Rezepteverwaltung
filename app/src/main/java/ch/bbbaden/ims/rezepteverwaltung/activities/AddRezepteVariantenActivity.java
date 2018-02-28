@@ -12,6 +12,8 @@ import com.google.android.gms.vision.barcode.Barcode;
 
 import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.activities.barcode.BarcodeCaptureActivity;
+import ch.bbbaden.ims.rezepteverwaltung.services.DataHolder;
+import ch.bbbaden.ims.rezepteverwaltung.services.QrInterpreter;
 
 public class AddRezepteVariantenActivity extends AppCompatActivity {
 
@@ -51,7 +53,10 @@ public class AddRezepteVariantenActivity extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
+                    String qrResultat = barcode.displayValue;
                     System.out.println("QR Code        " + barcode.displayValue);
+                    DataHolder.getInstance().setRezept(new QrInterpreter().interpretQr(qrResultat));
+                    goToNewActivity(RezeptActivity.class);
 
                 } else {
 //                    mResultTextView.setText(R.string.no_barcode_captured);

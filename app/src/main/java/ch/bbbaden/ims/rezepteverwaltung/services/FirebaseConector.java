@@ -18,7 +18,7 @@ public class FirebaseConector {
 
     public FirebaseConector() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        System.out.println("FirebaseConector--------------------");
+        System.out.println("FirebaseConector Constructor--------------------");
 //        deleteAll(AppDatabase.getAppDatabase(MainActivity.context));
     }
 

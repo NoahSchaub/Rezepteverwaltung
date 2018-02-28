@@ -1,5 +1,6 @@
 package ch.bbbaden.ims.rezepteverwaltung.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +14,11 @@ import ch.bbbaden.ims.rezepteverwaltung.R;
 import ch.bbbaden.ims.rezepteverwaltung.objects.Rezept;
 import ch.bbbaden.ims.rezepteverwaltung.services.AppDatabase;
 import ch.bbbaden.ims.rezepteverwaltung.services.DataHolder;
-import ch.bbbaden.ims.rezepteverwaltung.services.FirebaseConector;
+import ch.bbbaden.ims.rezepteverwaltung.services.PdfParser;
 import ch.bbbaden.ims.rezepteverwaltung.services.Toaster;
 
 public class MenuActivity extends AppCompatActivity {
+    public static Context context;
 
     Button btnAlleRezepte;
     Button btnSuche;
@@ -28,15 +30,18 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        context = this;
 
-        FirebaseConector conector = new FirebaseConector();
-        conector.downloadAllRezepte();
+        new PdfParser().execute("http://www.stundenplan.alte-kanti-aarau.ch/Dateien_PDF_und_DOC/Abkuerzungen/Abk_Lehrpersonen.pdf");
+
+//        FirebaseConector conector = new FirebaseConector();
+//        conector.downloadAllRezepte();
+
         btnAlleRezepte = findViewById(R.id.btnAlleRezepte);
         btnSuche = findViewById(R.id.btnGoToSuche);
         btnGluck = findViewById(R.id.btnGluck);
         btnNeuesRezept = findViewById(R.id.btnNeuesRezept);
         btnBackup = findViewById(R.id.btnBackup);
-
 
         btnAlleRezepte.setOnClickListener(new View.OnClickListener() {
             @Override

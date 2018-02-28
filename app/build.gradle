@@ -17,7 +17,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/cxf/bus-extensions.txt'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/spring.handlers'
+        exclude 'META-INF/spring.schemas'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+      exclude 'META-INF/blueprint.handlers'
+        exclude 'mozilla/public-suffix-list.txt'
 
+    }
 }
 
 dependencies {
@@ -32,9 +48,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compileOnly "org.projectlombok:lombok:1.16.20"
     annotationProcessor 'org.projectlombok:lombok:1.16.20'
-    compile 'android.arch.persistence.room:runtime:1.0.0'
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
-
+    compile 'org.apache.tika:tika-parsers:1.14'
+    compile group: 'org.apache.tika', name: 'tika-parsers', version: '1.17'
 
 }
 
